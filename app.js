@@ -1,34 +1,55 @@
-const express = require("express"),
-    path = require("path"),
-    app = express(),
-    puerto = 4000;
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+const database = require("./config/database");
+const ClientesRouter = require('./router/clientes.router');
+const cors = require('cors');
+const { default: mongoose } = require('mongoose');
 
-app.get('/', (peticion, respuesta) => {
-    // Podemos acceder a la petición HTTP
-    let agenteDeUsuario = peticion.header("user-agent");
-    respuesta.send("La ruta / solicitada con: " + agenteDeUsuario);
-});
-app.get('/pagina', (peticion, respuesta) => {
-    // Servir archivo HTML, o cualquier otro archivo
-    let rutaDeArchivo = path.join(__dirname, "plantilla.html");
-    respuesta.sendFile(rutaDeArchivo);
-});
+var app = express();
+require ("dotenv").config();
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
-app.get('/hola', (peticion, respuesta) => {
-    let mascota = {
-        nombre: "Maggie",
-        edad: 2,
-    };
-    respuesta.json(mascota);
-});
+// PORT
+const port = process.env.PORT || 4000;
 
-// Una vez definidas nuestras rutas podemos iniciar el servidor
-app.listen(puerto, err => {
-    if (err) {
-        // Aquí manejar el error
-        console.error("Error escuchando: ", err);
-        return;
-    }
-    // Si no se detuvo arriba con el return, entonces todo va bien ;)
-    console.log(`Escuchando en el puerto :${puerto}`);
-});
+
+//Conexion a Mongodb
+database.mongoConnect();
+// mongoose.connect(process.env.MONGOODB_URI)
+// .then(()=> console.log("Conexion a mongodb Atlas"))
+// .catch((error) => console.error(error));
+
+//Router
+app.use('/clientes',ClientesRouter);
+
+// iniciamos nuestro servidor
+app.listen(port,() =>{
+    console.log('API escuchando en el puerto ' + port)
+  
+  })
+  
+  // catch 404 and forward to error handler
+  app.use(function(req, res, next) {
+    next(createError(404));
+  });
+  
+  // error handler
+  app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    // render the error page
+    res.status(err.status || 500);
+    //res.render('error');
+    res.json({ error: err });
+  });
+  
+  module.exports = app;

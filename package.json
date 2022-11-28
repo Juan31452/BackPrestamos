@@ -2,15 +2,23 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Prestamos",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "author": "Juan Carlos Salazar",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.3",
-    "nodemon": "^2.0.20"
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11",
+    "universal-cookie": "^4.0.4"
   }
 }
