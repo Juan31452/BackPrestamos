@@ -4,3 +4,5 @@ const PrestamoControl = require("../controlador/prestamos.control");
 
 router.post("/",PrestamoControl.create);
 router.get("/",PrestamoControl.find);
+
+module.exports = router;

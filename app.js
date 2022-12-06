@@ -4,6 +4,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const database = require("./config/database");
 const ClientesRouter = require('./router/clientes.router');
+const PrestamosRouter = require('./router/prestamos.router');
+
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 
@@ -28,6 +30,7 @@ database.mongoConnect();
 
 //Router
 app.use('/clientes',ClientesRouter);
+app.use('/prestamos',PrestamosRouter);
 
 // iniciamos nuestro servidor
 app.listen(port,() =>{
