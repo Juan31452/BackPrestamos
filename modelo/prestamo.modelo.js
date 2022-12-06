@@ -33,7 +33,13 @@ var miprestamo = new Schema
         require: true 
         
     },
-                
+    pagado:
+    {
+        type: String,
+        require: true,
+        max:3 
+    },
+              
 });
 
 module.exports = mongoose.model('prestamo',miprestamo);
