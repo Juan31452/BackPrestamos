@@ -6,12 +6,14 @@ let response ={
 
 exports.create = function(req,res)
 {
-    let prestamo = new Clientes({
+    let prestamo = new Prestamo({
         fecha: req.body.fecha,
         valor_prestamo: req.body.valor_prestamo,
         interes: req.body.interes,
         cuota: req.body.cuota,
         cliente: req.body.cliente,
+        fotocopia: req.body.fotocopia,
+        letra: req.body.letra,
         pagado: req.body.pagado
         
         

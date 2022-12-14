@@ -33,20 +33,7 @@ var micliente = new Schema
         require: true ,
         max:20
     },
-    fotocopia:
-    {
-        type: String,
-        require: true ,
-        max:2
-    },
-    letra:
-    {
-        type: String,
-        require: true ,
-        max:2
-    },
-            
-    
+                
 });
 
 module.exports = mongoose.model('cliente',micliente);

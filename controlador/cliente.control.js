@@ -11,9 +11,7 @@ exports.create = function(req,res)
         apellidos: req.body.apellidos,
         correo: req.body.correo,
         cedula: req.body.cedula,
-        direccion: req.body.direccion,
-        fotocopia: req.body.fotocopia,
-        letra: req.body.letra
+        direccion: req.body.direccion
         
     })
     cliente.save(function(err)
@@ -54,9 +52,7 @@ exports.update = function(req,res)
         apellidos: req.body.apellidos,
         correo: req.body.correo,
         cedula: req.body.cedula,
-        direccion: req.body.direccion,
-        fotocopia: req.body.fotocopia,
-        letra: req.body.letra
+        direccion: req.body.direccion
    
     }
 

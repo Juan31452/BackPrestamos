@@ -7,7 +7,7 @@ var miprestamo = new Schema
     {
         type: String,
         require: true,
-        max:40 
+        max:20 
     },
     valor_prestamo:
     {
@@ -29,15 +29,27 @@ var miprestamo = new Schema
     },
     cliente:
     {
-        type: Number,
-        require: true 
-        
+        type: String,
+        require: true, 
+        max:40
+    },
+    fotocopia:
+    {
+        type: String,
+        require: true ,
+        max:2
+    },
+    letra:
+    {
+        type: String,
+        require: true ,
+        max:2
     },
     pagado:
     {
         type: String,
         require: true,
-        max:3 
+        max:2 
     },
               
 });
