@@ -5,6 +5,7 @@ var logger = require('morgan');
 const database = require("./config/database");
 const ClientesRouter = require('./router/clientes.router');
 const PrestamosRouter = require('./router/prestamos.router');
+const CuotasRouter = require('./router/cuotas.router');
 
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
@@ -31,6 +32,7 @@ database.mongoConnect();
 //Router
 app.use('/clientes',ClientesRouter);
 app.use('/prestamos',PrestamosRouter);
+app.use('/cuotas',CuotasRouter);
 
 // iniciamos nuestro servidor
 app.listen(port,() =>{
