@@ -11,8 +11,9 @@ var micuota = new Schema
     },
     prestamo:
     {
-        type: Number,
-        require: true 
+        type: String,
+        require: true ,
+        max: 50
         
     },
     cuota:
