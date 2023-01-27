@@ -45,11 +45,10 @@ var miprestamo = new Schema
         require: true ,
         max:2
     },
-    pagado:
+    debe:
     {
-        type: String,
-        require: true,
-        max:2 
+        type: Number,
+        require: true
     },
               
 });

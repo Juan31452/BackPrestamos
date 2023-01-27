@@ -14,7 +14,7 @@ exports.create = function(req,res)
         cliente: req.body.cliente,
         fotocopia: req.body.fotocopia,
         letra: req.body.letra,
-        pagado: req.body.pagado
+        pagado: req.body.debe
         
         
     })
@@ -59,7 +59,7 @@ exports.update = function(req,res)
         cliente: req.body.cliente,
         fotocopia: req.body.fotocopia,
         letra: req.body.letra,
-        pagado: req.body.pagado
+        pagado: req.body.debe
         
         
     }
