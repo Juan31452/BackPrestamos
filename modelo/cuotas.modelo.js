@@ -16,12 +16,6 @@ var micuota = new Schema
         max: 50
         
     },
-    cuota:
-    {
-        type: Number,
-        require: true 
-        
-    },
     interes:
     {
         type: Number,

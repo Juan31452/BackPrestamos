@@ -9,7 +9,6 @@ exports.create = function(req,res)
     let lacuota = new Cuotas({
         fecha: req.body.fecha,
         prestamo: req.body.prestamo,
-        cuota: req.body.cuota,
         interes: req.body.interes,
         abono_capital: req.body.abono_capital,
         saldo: req.body.saldo
