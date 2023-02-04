@@ -14,7 +14,7 @@ exports.create = function(req,res)
         cliente: req.body.cliente,
         fotocopia: req.body.fotocopia,
         letra: req.body.letra,
-        pagado: req.body.debe
+        debe: req.body.debe
         
         
     })
@@ -49,7 +49,7 @@ exports.findOne = function(req,res)
     })
 }
 
-exports.update = function(req,res)
+exports.update = async function(req,res)
 {
     let prestamo = {
         fecha: req.body.fecha,
@@ -59,7 +59,7 @@ exports.update = function(req,res)
         cliente: req.body.cliente,
         fotocopia: req.body.fotocopia,
         letra: req.body.letra,
-        pagado: req.body.debe
+        debe: req.body.debe
         
         
     }
@@ -80,7 +80,7 @@ exports.update = function(req,res)
         res.json(response)
            
     })
-
+    
 }    
 
 exports.remove = function(req,res)
@@ -102,3 +102,13 @@ exports.remove = function(req,res)
     })
     
 }
+
+exports.updatedebe = async (req, res) => {
+    try {
+        Prestamo.findByIdAndUpdate(req.params.id, { $inc: { debe: req.body.debe } }, { new: true });
+  
+      res.json(account);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };

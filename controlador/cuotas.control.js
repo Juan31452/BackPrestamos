@@ -1,4 +1,6 @@
 const Cuotas = require("../modelo/cuotas.modelo");
+const Prestamo = require("../modelo/prestamo.modelo");
+
 let response ={
     msg:"",
     exito:false
@@ -16,19 +18,20 @@ exports.create = function(req,res)
     })
     lacuota.save(function(err)
     {
-        if(err)
-        {
+       if(err)
+       {
             console.error(err),
             response.exito = false,
             response.msg = "Error al intentar Guardar"
             res.json(response)
             return;
-        }
+       }
 
-        response.exito = true,
-        response.msg = "Guardado con Exito"
-        res.json(response)
-    })              
+            response.exito = true,
+            response.msg = "Guardado con Exito"
+            res.json(response)
+    });
+               
 }
 
 exports.find = function(req,res)
@@ -37,3 +40,4 @@ exports.find = function(req,res)
         res.json(lacuota)
     })
 }
+

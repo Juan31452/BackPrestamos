@@ -6,6 +6,7 @@ router.post("/",PrestamoControl.create);
 router.get("/",PrestamoControl.find);
 router.get("/:id",PrestamoControl.findOne);
 router.put("/:id",PrestamoControl.update);
+router.put("/:id",PrestamoControl.updatedebe);
 router.delete("/:id",PrestamoControl.remove);
 
 

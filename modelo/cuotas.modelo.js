@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Prestamo = require("../modelo/prestamo.modelo");
 Schema = mongoose.Schema;
 
 var micuota = new Schema
@@ -11,9 +12,9 @@ var micuota = new Schema
     },
     prestamo:
     {
-        type: String,
-        require: true ,
-        max: 50
+      type: Schema.Types.ObjectId,
+      ref: 'prestamo',
+      required: true
         
     },
     interes:
