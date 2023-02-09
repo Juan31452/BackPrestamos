@@ -49,6 +49,18 @@ exports.findOne = function(req,res)
     })
 }
 
+exports.buscarCliente = async function(req,res)
+{
+        Prestamo.find({cliente : req.params.cliente},function(err,prestamo){
+            if (err) {
+                res.status(400).send(err);
+            } else {    
+              res.json(prestamo);
+            }
+    });    
+    
+}
+
 exports.update = async function(req,res)
 {
     let prestamo = {

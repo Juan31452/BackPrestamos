@@ -1,5 +1,4 @@
 const Cuotas = require("../modelo/cuotas.modelo");
-const Prestamo = require("../modelo/prestamo.modelo");
 
 let response ={
     msg:"",
@@ -41,3 +40,14 @@ exports.find = function(req,res)
     })
 }
 
+exports.buscarprestamo = async function(req,res)
+{
+        Cuotas.find({prestamo : req.params.prestamo},function(err,lacuota){
+            if (err) {
+                res.status(400).send(err);
+            } else {    
+              res.json(lacuota);
+            }
+    });    
+    
+}
