@@ -4,8 +4,10 @@
   "description": "Prestamos",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "react-scripts build"
   },
+  
   "author": "Juan Carlos Salazar",
   "license": "ISC",
   "dependencies": {
