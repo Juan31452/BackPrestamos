@@ -4,10 +4,8 @@
   "description": "Prestamos",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "build": "react-scripts build"
+    "start": "nodemon app.js"
   },
-  
   "author": "Juan Carlos Salazar",
   "license": "ISC",
   "dependencies": {
@@ -18,7 +16,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.3",
+    "mongoose": "^6.10.0",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
     "universal-cookie": "^4.0.4"

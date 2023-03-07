@@ -1,4 +1,4 @@
-const Clientes = require("../modelo/clientes.modelo");
+const Clientes = require('../modelo/clientes.modelo');
 let response ={
     msg:"",
     exito:false
@@ -31,19 +31,41 @@ exports.create = function(req,res)
     })              
 }
 
-exports.find = function(req,res)
-{
-    Clientes.find(function(err,cliente){
-        res.json(cliente)
-    })
-}
+// Obtener todos los clientes
+exports.find = async (req, res) => {
+   
+      const cliente = await Clientes.find();
+      res.json(cliente);
+ 
+  };
 
+// Buscar clientes por id
 exports.findOne = function(req,res)
 {
     Clientes.findOne({_id : req.params.id},function(err,cliente){
         res.json(cliente)
     })
 }
+
+// Buscar clientes por nombre
+exports.buscarPorNombre = async (req, res) => {
+   
+      const nombres = req.params.nombres;
+      console.log(nombres);
+      
+      const regex = new RegExp(nombres, 'i');
+
+      
+      if (typeof nombres !== 'string') {
+        throw new Error('El valor de búsqueda debe ser una cadena de texto');
+      }  
+
+      const query = { nombres: { $regex: regex } };
+      const cliente = await Clientes.find(query);
+      res.json(cliente);
+     
+  
+  };
 
 exports.update = function(req,res)
 {

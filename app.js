@@ -9,6 +9,7 @@ const CuotasRouter = require('./router/cuotas.router');
 
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
+mongoose.set('strictQuery', false); // Establece strictQuery en false
 
 var app = express();
 require ("dotenv").config();

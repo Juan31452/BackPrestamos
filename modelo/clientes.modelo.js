@@ -7,7 +7,8 @@ var micliente = new Schema
     {
         type: String,
         require: true,
-        max:40 
+        max:40, 
+        index : true
     },
     apellidos:
     {
