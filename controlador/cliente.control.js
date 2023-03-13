@@ -1,4 +1,6 @@
 const Clientes = require('../modelo/clientes.modelo');
+const usuario = require("../modelo/usuario.modelo");
+
 let response ={
     msg:"",
     exito:false
@@ -6,12 +8,15 @@ let response ={
 
 exports.create = function(req,res)
 {
+    const { usuarioId } = req.params; // el ID del usuario se pasa como parámetro
+
     let cliente = new Clientes({
         nombres: req.body.nombres,
         apellidos: req.body.apellidos,
         correo: req.body.correo,
         cedula: req.body.cedula,
-        direccion: req.body.direccion
+        direccion: req.body.direccion,
+        usuario: usuario._id
         
     })
     cliente.save(function(err)

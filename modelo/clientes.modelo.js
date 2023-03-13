@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 Schema = mongoose.Schema;
 
 var micliente = new Schema
@@ -34,6 +35,12 @@ var micliente = new Schema
         require: true ,
         max:20
     },
+    usuario: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true,
+      },
+
                 
 });
 

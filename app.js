@@ -6,6 +6,7 @@ const database = require("./config/database");
 const ClientesRouter = require('./router/clientes.router');
 const PrestamosRouter = require('./router/prestamos.router');
 const CuotasRouter = require('./router/cuotas.router');
+const UsuariosRouter = require('./router/usuario.router');
 
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
@@ -34,6 +35,7 @@ database.mongoConnect();
 app.use('/clientes',ClientesRouter);
 app.use('/prestamos',PrestamosRouter);
 app.use('/cuotas',CuotasRouter);
+app.use('/usuarios',UsuariosRouter);
 
 // iniciamos nuestro servidor
 app.listen(port,() =>{
