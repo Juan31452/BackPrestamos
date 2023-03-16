@@ -39,3 +39,11 @@ exports.find = async (req, res) => {
       res.json(usuario);
  
   };
+
+  //Buscar por email y password
+  exports.login = function(req,res,next)
+{
+    Usuario.findOne({email : req.body.email,password : req.body.password},function(err,usuarios){
+        res.json(usuarios)
+    })
+}
