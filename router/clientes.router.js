@@ -8,6 +8,7 @@ router.get("/",ClientesControl.find);
 router.get("/:id",ClientesControl.findOne);
 router.put("/:id",ClientesControl.update);
 router.delete("/:id",ClientesControl.remove);
+router.get("/buscarPorUsuario/:usuario",ClientesControl.BuscarPorUsuario);
 router.get("/buscarPorNombre/:nombres",ClientesControl.buscarPorNombre); 
 
 module.exports = router;

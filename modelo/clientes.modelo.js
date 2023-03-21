@@ -38,10 +38,8 @@ var micliente = new Schema
     usuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
-        required: true,
-      },
-
-                
+        required: true
+    }                
 });
 
 module.exports = mongoose.model('cliente',micliente);

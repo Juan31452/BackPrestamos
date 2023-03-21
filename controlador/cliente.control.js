@@ -6,43 +6,25 @@ let response ={
     exito:false
 }
 
-exports.create = function(req,res)
-{
-    const { usuarioId } = req.params; // el ID del usuario se pasa como parámetro
-
-    let cliente = new Clientes({
-        nombres: req.body.nombres,
-        apellidos: req.body.apellidos,
-        correo: req.body.correo,
-        cedula: req.body.cedula,
-        direccion: req.body.direccion,
-        usuario: usuario._id
-        
-    })
-    cliente.save(function(err)
-    {
-        if(err)
-        {
-            console.error(err),
-            response.exito = false,
-            response.msg = "Error al intentar Guardar"
-            res.json(response)
-            return;
-        }
-
-        response.exito = true,
-        response.msg = "Guardado con Exito"
-        res.json(response)
-    })              
-}
+exports.create = async (req, res, next) => {
+    try {
+      const { nombres, apellidos,correo,cedula,direccion,usuario   } = req.body;
+      const cliente = new Clientes({ nombres, apellidos,correo,cedula,direccion, usuario });
+      await cliente.save();
+      res.status(201).json({ message: 'Cliente creado con exito' });
+    } catch (error) {
+      next(error);
+    }
+  };
 
 // Obtener todos los clientes
-exports.find = async (req, res) => {
-   
-      const cliente = await Clientes.find();
-      res.json(cliente);
- 
-  };
+
+exports.find = function(req,res)
+{
+    Clientes.find(function(err,cliente){
+        res.json(cliente)
+    })
+}
 
 // Buscar clientes por id
 exports.findOne = function(req,res)
@@ -50,6 +32,17 @@ exports.findOne = function(req,res)
     Clientes.findOne({_id : req.params.id},function(err,cliente){
         res.json(cliente)
     })
+}
+
+//Buscar clientes por usuario
+exports.BuscarPorUsuario = async (req,res) => 
+{
+    const usuario = req.params.usuario;
+    const query = { usuario: req.params.usuario };
+    const cliente = await Clientes.find(query);
+   
+        res.json(cliente);
+  
 }
 
 // Buscar clientes por nombre
