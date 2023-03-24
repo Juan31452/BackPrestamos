@@ -12,6 +12,7 @@ exports.create = function(req,res)
         interes: req.body.interes,
         cuota: req.body.cuota,
         cliente: req.body.cliente,
+        usuario: req.body.usuario,
         fotocopia: req.body.fotocopia,
         letra: req.body.letra,
         debe: req.body.debe
@@ -49,6 +50,19 @@ exports.findOne = function(req,res)
     })
 }
 
+//Buscar prestamos por usuario
+exports.BuscarPorUsuario = async (req,res) => 
+{
+    const usuario = req.params.usuario;
+    const query = { usuario: req.params.usuario };
+    const prestamo = await Prestamo.find(query);
+   
+        res.json(prestamo);
+  
+}
+
+
+
 exports.buscarCliente = async function(req,res)
 {
         Prestamo.find({cliente : req.params.cliente},function(err,prestamo){
@@ -60,6 +74,26 @@ exports.buscarCliente = async function(req,res)
     });    
     
 }
+
+// Buscar clientes por nombre
+exports.buscarPorNombre = async (req, res) => {
+   
+    const cliente = req.params.cliente;
+    console.log(cliente);
+    
+    const regex = new RegExp(cliente, 'i');
+
+    
+    if (typeof cliente !== 'string') {
+      throw new Error('El valor de búsqueda debe ser una cadena de texto');
+    }  
+
+    const query = { cliente: { $regex: regex } };
+    const prestamos = await Prestamo.find(query);
+    res.json(prestamos);
+   
+
+};
 
 exports.update = async function(req,res)
 {

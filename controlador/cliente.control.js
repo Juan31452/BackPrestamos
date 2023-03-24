@@ -63,7 +63,7 @@ exports.buscarPorNombre = async (req, res) => {
       res.json(cliente);
      
   
-  };
+};
 
 exports.update = function(req,res)
 {

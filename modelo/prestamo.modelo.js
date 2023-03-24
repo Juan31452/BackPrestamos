@@ -33,6 +33,13 @@ var miprestamo = new Schema
         require: true, 
         max:40
     },
+
+    usuario: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true
+    },
+
     fotocopia:
     {
         type: String,
