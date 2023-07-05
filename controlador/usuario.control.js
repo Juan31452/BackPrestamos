@@ -1,4 +1,6 @@
 const Usuario = require("../modelo/usuario.modelo");
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 
 let response ={
     msg:"",
@@ -43,8 +45,23 @@ exports.find = async (req, res) => {
   //Buscar por email y password
   exports.login = function(req,res,next)
 {
-    Usuario.findOne({email : req.body.email,password : req.body.password},function(err,usuarios){
-        res.json(usuarios)
+    // let hashedpass= crypto.createHash('sha512').update(req.body.password).digest("hex");
+    
+     Usuario.findOne({email : req.body.email,password : req.body.password},function(err,usuarios){
+    //     let response = {
+    //         token: null
+    //     } 
+                    
+    //     if(usuarios!==null)
+    //     {
+    //       response.token = jwt.sign({
+    //       id: usuarios._id,
+    //       email: usuarios.email
+    //       }, "__recret__",
+    //       { expiresIn: '1h'})
+    //     }
+        
+        res.json(usuarios);  
     })
 }
 
