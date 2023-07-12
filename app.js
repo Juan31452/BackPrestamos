@@ -3,12 +3,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var auth = require("./auth/mi_auth");
-const database = require("./config/database");
+const mongoConnect = require("./config/database");
 const connectDB = require("./config/atlas");
 const ClientesRouter = require('./router/clientes.router');
 const PrestamosRouter = require('./router/prestamos.router');
 const CuotasRouter = require('./router/cuotas.router');
 const UsuariosRouter = require('./router/usuario.router');
+const helmet = require('helmet');
 
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
@@ -22,14 +23,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+app.use(helmet());//librería de seguridad
 
 // PORT
 const port = process.env.PORT || 4000;
 
 
 //Conexion a Mongodb
-//database.mongoConnect();
-connectDB();
+mongoConnect();
+//connectDB();
 // mongoose.connect(process.env.MONGOODB_URI)
 // .then(()=> console.log("Conexion a mongodb Atlas"))
 // .catch((error) => console.error(error));

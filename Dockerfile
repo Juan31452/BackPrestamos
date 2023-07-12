@@ -1,26 +1,26 @@
-# Use an existing Docker image as the base image
+# utilizar imagen node
 FROM node:alpine
 
-# Set the working directory in the container
+# crear directorio dentro contenedor
 WORKDIR /app
 
-# Copy the package.json file to the container
+# Copiar el package.json en el contenedor
 COPY package*.json ./
 
-# Install dependencies
+# Ejecutar 
 RUN npm install
 
 # Instalar nodemon
 RUN npm install -g nodemon
 
-# Copy the rest of the application code to the container
+# Copiar codigo a la carpeta del contenedor
 COPY . .
 
 #version build
 #RUN npm run build
 
-# Expose the port that the application will listen on
+# la aplicacion se ejecuta en el puerto 4000
 EXPOSE 4000
 
-# Specify the command to run when the container starts
+# correr el contenedor
 CMD ["npm", "start"]
